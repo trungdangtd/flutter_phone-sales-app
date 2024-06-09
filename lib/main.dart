@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/utils/theme/theme.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +11,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!!!'),
-        ),
+    return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: ThemeData(
+        textTheme: TAppTheme.lightTheme.textTheme,
       ),
+      darkTheme: ThemeData(),
     );
   }
 }
