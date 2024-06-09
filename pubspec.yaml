@@ -10,6 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.0
+  get: ^4.6.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -17,3 +21,31 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+assets:
+  - assets/images/
+  - assets/icons/brands/
+  - assets/logos/
+
+fonts:
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/Poppins-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Poppins-SemiBold.ttf
+      - asset: assets/fonts/Poppins-BoldItalic.ttf
+      - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
+      - asset: assets/fonts/Poppins-Italic.ttf
+        style: italic
+      - asset: assets/fonts/Poppins-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Poppins-LightItalic.ttf
+      - asset: assets/fonts/Poppins-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Poppins-MediumItalic.ttf
+        weight: 500
+      - asset: assets/fonts/Poppins-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Poppins-Thin.ttf
