@@ -5,7 +5,3 @@ import 'package:flutter_store_mobile/app.dart';
 void main() {
   runApp(const App());
 }
-
-
-  
-
