@@ -15,9 +15,10 @@ class TTexts {
   static const String onBoardingTitle2 = "Chọn phương thức thanh toán";
   static const String onBoardingTitle3 = "Giao hàng tận nơi";
 
-  static const String onBoardingSubTitle1 = "Chào mừng đến với Thế Giới Lựa Chọn Không Giới Hạn - Sản Phẩm Hoàn Hảo Đang Chờ Đợi Bạn!";
-  static const String onBoardingSubTitle2 = "Để Giao Dịch Mượt Mà, Hãy Chọn Đường Thanh Toán của Bạn - Sự Tiện Lợi của Bạn, Ưu Tiên của Chúng Tôi!";
-  static const String onBoardingSubTitle3 = "Từ Cửa Hàng đến Nhà Bạn - Giao Hàng Nhanh Chóng, An Toàn và Không Tiếp Xúc!";
+  static const String onBoardingSubTitle1 = "Chào mừng đến với Thế Giới 5TechZone - Những Sản Phẩm Hoàn Hảo Đang Chờ Đợi Bạn!";
+  static const String onBoardingSubTitle2 = "Để Giao Dịch Không Giới Hạn, Hãy chọn cách mua của bạn - Sự Tiện Lợi của Bạn Là Ưu Tiên của Chúng Tôi!";
+  static const String onBoardingSubTitle3 = "Bạn sẽ khám phá những bộ sưu tập điện thoại mới nhất từ ​​các thương hiệu hàng đầu, cùng với các thiết bị âm thanh đỉnh cao";
+  static const String onBoardingSubTitle4 = "Từ Cửa Hàng đến Nhà Bạn - Giao Hàng Nhanh Chóng, An Toàn và Không Tiếp Xúc!";
 
 
   // -- Authentication Forms
