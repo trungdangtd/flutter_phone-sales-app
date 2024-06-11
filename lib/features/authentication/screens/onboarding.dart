@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_mobile/utils/constants/colors.dart';
+import 'package:flutter_store_mobile/features/authentication/controllers/onboarding_controller.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/widget/onboarding_nextbutton.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/widget/onboardingnavigation.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/widget/onboardingpage.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/widget/onboardingskip.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
-import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
-import 'package:flutter_store_mobile/utils/device/device_utility.dart';
-import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:get/get.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnboardingController());
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -20,7 +22,6 @@ class OnboardingScreen extends StatelessWidget {
             end: Alignment.bottomLeft,
             colors: [
               Color(0xFFff939b),
-              // Color(0xFFBFF4BE),
               Color(0xFFef2a39),
             ],
           ),
@@ -28,6 +29,8 @@ class OnboardingScreen extends StatelessWidget {
         child: Stack(
           children: [
             PageView(
+              controller: controller.pageController,
+              onPageChanged: controller.updatePageIndicator,
               children: const [
                 onBoardingPage(
                     image: TImages.onBoardingImage1,
@@ -47,69 +50,14 @@ class OnboardingScreen extends StatelessWidget {
                     subTitle: TTexts.onBoardingSubTitle4),
               ],
             ),
-            OnBoardingSkip(),
-            onBoardingNavigationMethod(),
+            //skip button
+            const onBoardingSkip(),
+            //navigation
+            const onBoardingNavigation(),
+            //Circular button
+            const onboardingNextButton(),
           ],
         ),
-      ),
-    );
-  }
-
-  Positioned onBoardingNavigationMethod() {
-    return Positioned(
-            bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
-            left: TSizes.defaultSpace,
-            child: SmoothPageIndicator(
-                controller: PageController(),
-                count: 3,
-                effect: const ExpandingDotsEffect(
-                    activeDotColor: TColors.dark, dotHeight: 6)),
-          );
-  }
-
-  OnBoardingSkip() {}
-}
-
-// ignore: camel_case_types
-class onBoardingPage extends StatelessWidget {
-  const onBoardingPage({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.subTitle,
-  });
-
-  final String image, title, subTitle;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(TSizes.defaultSpace),
-      child: Column(
-        children: [
-          Image(
-              width: THelperFunctions.screenWidth() * 0.8,
-              height: THelperFunctions.screenHeight() * 0.6,
-              image: AssetImage(image)),
-          Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .headlineLarge
-                ?.copyWith(color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: TSizes.spaceBtwItems,
-          ),
-          Text(
-            subTitle,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }
