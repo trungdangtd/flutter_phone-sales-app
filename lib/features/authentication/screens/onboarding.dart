@@ -3,7 +3,7 @@ import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
-import 'package:flutter_store_mobile/utils/device/device_utility';
+import 'package:flutter_store_mobile/utils/device/device_utility.dart';
 import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -19,9 +19,9 @@ class OnboardingScreen extends StatelessWidget {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xFFff4747),
+              Color(0xFFff939b),
               // Color(0xFFBFF4BE),
-              Color(0xFFff4747),
+              Color(0xFFef2a39),
             ],
           ),
         ),
@@ -47,23 +47,27 @@ class OnboardingScreen extends StatelessWidget {
                     subTitle: TTexts.onBoardingSubTitle4),
               ],
             ),
-            // OnBoardingSkip(),
-            Positioned(
-              bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
-              left: TSizes.defaultSpace,
-              child: SmoothPageIndicator(
-                  controller: PageController(),
-                  count: 3,
-                  effect: const ExpandingDotsEffect(
-                      activeDotColor: TColors.dark, dotHeight: 6)),
-            ),
+            OnBoardingSkip(),
+            onBoardingNavigationMethod(),
           ],
         ),
       ),
     );
   }
 
-  // OnBoardingSkip() {}
+  Positioned onBoardingNavigationMethod() {
+    return Positioned(
+            bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
+            left: TSizes.defaultSpace,
+            child: SmoothPageIndicator(
+                controller: PageController(),
+                count: 3,
+                effect: const ExpandingDotsEffect(
+                    activeDotColor: TColors.dark, dotHeight: 6)),
+          );
+  }
+
+  OnBoardingSkip() {}
 }
 
 // ignore: camel_case_types

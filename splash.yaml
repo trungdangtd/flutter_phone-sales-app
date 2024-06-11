@@ -1,12 +1,12 @@
 flutter_native_splash:
-  color: "#c0dfd3"
+  color: "#ef2a39"
   color_dark: "#000000"
   image: assets/logos/5TechZone-logo.png
   image_dark: assets/logos/5TechZone-logo.png
   
 
   android_12:
-    color: "#c0dfd3"
+    color: "ef2a39"
     color_dark: "#000000"
     image: assets/logos/5TechZone-logo.png
     image_dark: assets/logos/5TechZone-logo.png
