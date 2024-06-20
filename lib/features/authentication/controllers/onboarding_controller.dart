@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:get/get.dart';
 
 class OnboardingController extends GetxController {
@@ -20,10 +21,11 @@ class OnboardingController extends GetxController {
 
   ///update the current page index
   void nextPage() {
-    if (currentPageIndex.value < 3) {
-      currentPageIndex.value++;
-      pageController.jumpToPage(currentPageIndex.value);
+    if (currentPageIndex.value == 3) {
+      Get.offAll(const LoginScreen());
     } else {
+      int page = currentPageIndex.value + 1;
+      pageController.jumpToPage(page);
       // sang trang login
     }
   }

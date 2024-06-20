@@ -44,7 +44,7 @@ class TTexts {
   static const String resendEmailIn = "Gửi lại email trong";
 
   // -- Authentication Headings
-  static const String loginTitle = "Chào mừng trở lại,";
+  static const String loginTitle = "Chào mừng trở lại";
   static const String loginSubTitle =
       "Khám Phá Lựa Chọn Vô Hạn và Tiện Lợi Không Đối Thủ.";
   static const String signupTitle = "Hãy tạo tài khoản của bạn";

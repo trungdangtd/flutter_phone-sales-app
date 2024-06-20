@@ -8,4 +8,13 @@ class TImages {
       "assets/images/on_boarding_images/onboarding_screen_2.gif";
   static const String onBoardingImage4 =
       "assets/images/on_boarding_images/sammy-line-delivery.gif";
+
+  //AppLogo
+  static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
+
+  //Social Logos
+  static const String google =
+      "assets/images/on_boarding_images/google-icon.png";
+  static const String facebook =
+      "assets/images/on_boarding_images/facebook-icon.png";
 }
