@@ -16,18 +16,20 @@ class TFormDivider extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Divider(
-            color: dark ? TColors.darkGrey : TColors.grey,
-            thickness: 0.5,
-            indent: 60,
-            endIndent: 5),
+        Flexible(
+            child: Divider(
+                color: dark ? TColors.darkGrey : TColors.grey,
+                thickness: 0.5,
+                indent: 10,
+                endIndent: 5)),
         Text(TTexts.orSignInWith.capitalize!,
             style: Theme.of(context).textTheme.labelMedium),
-        Divider(
-            color: dark ? TColors.darkGrey : TColors.grey,
-            thickness: 0.5,
-            indent: 60,
-            endIndent: 0.5),
+        Flexible(
+            child: Divider(
+                color: dark ? TColors.darkGrey : TColors.grey,
+                thickness: 0.5,
+                indent: 10,
+                endIndent: 5)),
       ],
     );
   }

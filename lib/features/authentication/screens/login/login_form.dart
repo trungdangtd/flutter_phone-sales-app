@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/signup/signup.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TLoginForm extends StatelessWidget {
@@ -25,9 +27,10 @@ class TLoginForm extends StatelessWidget {
 
             //Password
             TextFormField(
+              obscureText: true,
               decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
                 labelText: TTexts.password,
+                prefixIcon: Icon(Iconsax.password_check),
                 suffixIcon: Icon(Iconsax.eye_slash),
               ),
             ),
@@ -58,11 +61,13 @@ class TLoginForm extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {}, child: const Text(TTexts.signIn))),
             const SizedBox(height: TSizes.spaceBtwItems),
+
             //Create account button
             SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                    onPressed: () {}, child: const Text(TTexts.createAccount))),
+                    onPressed: () => Get.to(() => const SignupScreen()),
+                    child: const Text(TTexts.createAccount))),
           ],
         ),
       ),
