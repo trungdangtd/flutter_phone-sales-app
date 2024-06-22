@@ -25,6 +25,7 @@ class SuccessScreen extends StatelessWidget {
           padding: TspacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
+              //Hinh
               Image(
                 image: AssetImage(image),
                 width: THelperFunctions.screenWidth() * 0.6,
@@ -42,13 +43,13 @@ class SuccessScreen extends StatelessWidget {
               Text(subTitle,
                   style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               ///Button
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() => const LoginScreen()),
+                      onPressed: onPressed,
                       child: const Text(TTexts.tContinue))),
             ],
           ),

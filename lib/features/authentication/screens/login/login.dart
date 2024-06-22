@@ -20,6 +20,8 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: TspacingStyle.paddingWithAppBarHeight,
           child: Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // Chao mung tro lai qua ben trai
             children: [
               //Logo - sub
               const TLoginHeader(),

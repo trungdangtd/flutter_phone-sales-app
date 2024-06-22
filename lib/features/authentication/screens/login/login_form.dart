@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/signup.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
@@ -50,7 +51,8 @@ class TLoginForm extends StatelessWidget {
 
                 ///Forget password
                 TextButton(
-                    onPressed: () {}, child: const Text(TTexts.forgetPassword)),
+                    onPressed: () => Get.to(() => const ForgetPassword()),
+                    child: const Text(TTexts.forgetPassword)),
               ],
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
