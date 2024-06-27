@@ -13,28 +13,29 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //header
             TPrimaryHeaderContainer(
-                child: Column(
-              children: [
-                TAppBar(
-                  title: Column(
-                    children: [
-                      Text(TTexts.homeAppbarTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(color: TColors.grey)),
-                      Text(TTexts.homeAppbarSubTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(color: TColors.white)),
-                    ],
+              child: Column(
+                children: [
+                  TAppBar(
+                    title: Column(
+                      children: [
+                        Text(TTexts.homeAppbarTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(color: TColors.grey)),
+                        Text(TTexts.homeAppbarSubTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(color: TColors.white)),
+                      ],
+                    ),
                   ),
-                )
-              ],
-            )),
+                ],
+              ),
+            ),
+            // Các phần khác của màn hình
           ],
         ),
       ),

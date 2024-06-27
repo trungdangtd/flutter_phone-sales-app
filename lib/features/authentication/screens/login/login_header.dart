@@ -13,7 +13,7 @@ class TLoginHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
+        const Image(
           height: 150,
           image: AssetImage(TImages.appLogo),
           //(dark ? TImages.lightAppLogo : TImages.darkAppLogo) dành cho logo chế độ sáng tối//

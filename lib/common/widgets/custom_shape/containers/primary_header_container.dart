@@ -22,7 +22,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
           height: 400,
           child: Stack(
             children: [
-              //Background Shape co the custom
+              // Background Shape có thể tùy chỉnh
               Positioned(
                   top: -150,
                   right: -250,
@@ -34,6 +34,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
                 child: TCircularContainer(
                     backgroundColor: TColors.white.withOpacity(0.2)),
               ),
+              child, // Đảm bảo rằng `child` được thêm vào đây
             ],
           ),
         ),
