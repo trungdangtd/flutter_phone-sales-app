@@ -4,9 +4,11 @@ import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_store_mobile/features/shop/screens/home/widgets/home_brands.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
+import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/custom_shape/containers/primary_header_container.dart';
+import 'widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,6 +51,16 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             // Các phần khác của màn hình
+            Padding(
+              padding: EdgeInsets.all(TSizes.defaultSpace),
+              child: TPromoSlider(
+                banners: [
+                  TImages.promoBanner1,
+                  TImages.promoBanner2,
+                  TImages.promoBanner3
+                ],
+              ),
+            ),
           ],
         ),
       ),
