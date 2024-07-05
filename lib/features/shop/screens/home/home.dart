@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             // Các phần khác của màn hình
+            //Slider
             Padding(
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
@@ -64,7 +65,12 @@ class HomeScreen extends StatelessWidget {
                   ]),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
-                  //San pham
+                  //Title
+                  TSectionWidget(
+                      title: 'Các sản phẩm phổ biến', onPressed: () {}),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+
+                  //Grid view San pham
                   TGridLayout(
                       itemCount: 4,
                       itemBuilder: (_, index) => const TProductCardVertical())

@@ -6,7 +6,7 @@ class TSectionWidget extends StatelessWidget {
     this.textColor,
     this.showActionbutton = true,
     required this.title,
-    this.buttonTitle = 'view all',
+    this.buttonTitle = 'Hiện tất cả',
     this.onPressed,
   });
 
@@ -18,6 +18,7 @@ class TSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title,
             style: Theme.of(context)
@@ -27,7 +28,7 @@ class TSectionWidget extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
         if (showActionbutton)
-          TextButton(onPressed: () {}, child: Text(buttonTitle))
+          TextButton(onPressed: onPressed, child: Text(buttonTitle))
       ],
     );
   }
