@@ -74,16 +74,19 @@ class TProductCardVertical extends StatelessWidget {
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             // thông tin chi tiết
-            const Padding(
-              padding: EdgeInsets.only(left: TSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TProductTitleText(
-                      title: 'Green Nike Air Shoe', smallSize: true),
-                  SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTitleWithVerifiedIcon(title: 'Nike'),
-                ],
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: TSizes.sm),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TProductTitleText(
+                        title: 'Green Nike Air Shoe', smallSize: true),
+                    SizedBox(height: TSizes.spaceBtwItems / 2),
+                    TBrandTitleWithVerifiedIcon(title: 'Nike'),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
@@ -91,9 +94,12 @@ class TProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //Giá
-                const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm),
-                  child: TProductPriceText(price: '35.0'),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: TSizes.sm),
+                    child: TProductPriceText(price: '35.0'),
+                  ),
                 ),
 
                 // Button add vào giỏ hàng
