@@ -41,8 +41,10 @@ class TImages {
   static const String promoBanner3 = "assets/images/banners/banner3.png";
 
   //Sản Phẩm
-  static const String productImage1 = "assets/images/porducts/images.png";
-  static const String productImage2 = "assets/images/porducts/images2.png";
+  static const String productImage1 =
+      "assets/images/products/—Pngtree—headset_5966775.png";
+  static const String productImage2 =
+      "assets/images/products/—Pngtree—young stylish stereo headphones_4452366.png";
   static const String productImage3 = "assets/images/products/nike-shoes.png";
 
   //Brand
