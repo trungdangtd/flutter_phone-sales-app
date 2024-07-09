@@ -17,10 +17,7 @@ class THomeBrands extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return TVerticalImageText(
-            image: TImages.appleLogo,
-            title: 'Apple',
-            onTap: () {},
-          );
+              image: TImages.appleLogo, title: 'Apple', onTap: () {});
         },
       ),
     );

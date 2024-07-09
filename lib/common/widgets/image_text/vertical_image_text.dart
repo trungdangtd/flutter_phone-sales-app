@@ -9,7 +9,7 @@ class TVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = TColors.white,
-    this.backgroundColor = TColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
@@ -22,7 +22,7 @@ class TVerticalImageText extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     final dark = THelperFunctions.isDarkMode(context);
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
