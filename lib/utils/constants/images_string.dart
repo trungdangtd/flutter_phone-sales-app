@@ -18,6 +18,9 @@ class TImages {
   static const String facebook =
       "assets/images/on_boarding_images/facebook-icon.png";
 
+  //Hồ sơ
+  static const String user = "assets/images/user/user.png";
+
   //BrandLogo
   static const String appleLogo = "assets/icons/brands/apple-logo.png";
 
