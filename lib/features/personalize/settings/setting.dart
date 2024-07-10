@@ -5,8 +5,10 @@ import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../common/widgets/list_tile/user_profile_tile.dart';
+import '../profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -29,7 +31,8 @@ class SettingsScreen extends StatelessWidget {
                               .apply(color: TColors.white))),
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //
-                  const TUserProfileTile(),
+                  TUserProfileTile(
+                      onPressed: () => Get.to(() => const ProfileScreen())),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
