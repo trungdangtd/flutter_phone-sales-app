@@ -3,10 +3,12 @@ import "package:flutter_store_mobile/common/widgets/custom_shape/containers/roun
 import "package:flutter_store_mobile/common/widgets/images/rounded_image.dart";
 import "package:flutter_store_mobile/common/widgets/text/product_price_text.dart";
 import "package:flutter_store_mobile/common/widgets/text/product_title_text.dart";
+import "package:flutter_store_mobile/features/shop/screens/product_details/product_detail.dart";
 import "package:flutter_store_mobile/utils/constants/colors.dart";
 import "package:flutter_store_mobile/utils/constants/images_string.dart";
 import "package:flutter_store_mobile/utils/constants/sizes.dart";
 import "package:flutter_store_mobile/utils/helpers/helper_function.dart";
+import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
 import "../../../style/shadows.dart";
 import "../../icons/t_circular_icon.dart";
@@ -20,7 +22,7 @@ class TProductCardVertical extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     //Container san pham
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetail()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),

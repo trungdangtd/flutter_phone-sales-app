@@ -53,4 +53,5 @@ class TImages {
   //Brand
   static const String clothIcon =
       "assets/icons/categories/icons8-tailors-dummy-64.png";
+  static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
 }
