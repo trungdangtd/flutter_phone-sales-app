@@ -54,4 +54,12 @@ class TImages {
   static const String clothIcon =
       "assets/icons/categories/icons8-tailors-dummy-64.png";
   static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+
+  //Review sản phẩm
+  static const String userProfileImage1 =
+      "assets/images/reviews/review_profile_image_1.jpg";
+  static const String userProfileImage2 =
+      "assets/images/reviews/review_profile_image_2.jpeg";
+  static const String userProfileImage3 =
+      "assets/images/reviews/review_profile_image_3.jpeg";
 }

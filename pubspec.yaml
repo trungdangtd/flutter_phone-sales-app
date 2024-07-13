@@ -17,6 +17,7 @@ dependencies:
   #mô tả chi tiết sản phẩm
   readmore: ^3.0.0
   carousel_slider: ^4.2.1
+  flutter_rating_bar: ^4.0.1
 
   http: ^1.2.1
   intl: ^0.19.0

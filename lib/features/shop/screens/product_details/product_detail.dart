@@ -5,8 +5,10 @@ import 'package:flutter_store_mobile/features/shop/screens/product_details/widge
 import 'package:flutter_store_mobile/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:flutter_store_mobile/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:flutter_store_mobile/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:flutter_store_mobile/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -68,7 +70,8 @@ class ProductDetail extends StatelessWidget {
                       const TSectionWidget(
                           title: 'Đánh giá (25)', showActionbutton: true),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () =>
+                              Get.to(() => const ProductReviewsScreen()),
                           icon: const Icon(Iconsax.arrow_right4, size: 25)),
                     ],
                   ),
