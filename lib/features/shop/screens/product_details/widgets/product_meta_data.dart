@@ -56,7 +56,7 @@ class TProductMetaData extends StatelessWidget {
           children: [
             const TProductTitleText(title: 'Trạng thái'),
             const SizedBox(width: TSizes.spaceBtwItems),
-            Text('Kho', style: Theme.of(context).textTheme.titleMedium),
+            Text('Còn hàng', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
 
