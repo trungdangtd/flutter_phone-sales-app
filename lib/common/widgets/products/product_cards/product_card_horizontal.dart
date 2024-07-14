@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_mobile/common/style/shadows.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart';
 import 'package:flutter_store_mobile/common/widgets/images/rounded_image.dart';
 import 'package:flutter_store_mobile/common/widgets/text/brand_title_text_verfied_icon.dart';
