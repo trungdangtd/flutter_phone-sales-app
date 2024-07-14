@@ -8,7 +8,7 @@ import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../common/widgets/list_tile/user_profile_tile.dart';
-import '../profile/profile.dart';
+import '../screen/profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
