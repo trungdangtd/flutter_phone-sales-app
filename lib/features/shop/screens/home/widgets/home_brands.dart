@@ -10,7 +10,7 @@ class THomeBrands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 88,
+      height: 110,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: 6,
