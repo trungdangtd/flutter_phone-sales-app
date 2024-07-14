@@ -4,6 +4,7 @@ import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/prim
 import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
+import 'package:flutter_store_mobile/features/shop/screens/order/order.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -52,10 +53,11 @@ class SettingsScreen extends StatelessWidget {
                       title: 'Địa chỉ',
                       subTitle: 'Thiết lập địa chỉ giao hàng',
                       onTap: () => Get.to(() => const UserAddressScreen())),
-                  const TSettingMenuTile(
+                  TSettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'Giỏ Hàng',
-                      subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng'),
+                      subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng',
+                      onTap: () => Get.to(() => const OrderScreen())),
                   const TSettingMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'Đơn đặt hàng',
