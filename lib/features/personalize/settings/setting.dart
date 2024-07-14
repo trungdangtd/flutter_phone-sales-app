@@ -3,6 +3,7 @@ import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/primary_header_container.dart';
 import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -46,10 +47,11 @@ class SettingsScreen extends StatelessWidget {
                       title: 'Tùy chỉnh tài khoản', showActionbutton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
-                  const TSettingMenuTile(
+                  TSettingMenuTile(
                       icon: Iconsax.home,
                       title: 'Địa chỉ',
-                      subTitle: 'Thiết lập địa chỉ giao hàng'),
+                      subTitle: 'Thiết lập địa chỉ giao hàng',
+                      onTap: () => Get.to(() => const UserAddressScreen())),
                   const TSettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'Giỏ Hàng',
