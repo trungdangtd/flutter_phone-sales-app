@@ -39,7 +39,7 @@ class TLoaders {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
-      backgroundColor: Color.fromARGB(255, 63, 101, 238),
+      backgroundColor: const Color.fromARGB(255, 63, 101, 238),
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
@@ -49,7 +49,8 @@ class TLoaders {
       ),
     );
   }
-   static warningSnackbar({required title, message = '', duration = 3}) {
+
+  static warningSnackbar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
       message,
@@ -66,6 +67,7 @@ class TLoaders {
       ),
     );
   }
+
   static errorSnackbar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,

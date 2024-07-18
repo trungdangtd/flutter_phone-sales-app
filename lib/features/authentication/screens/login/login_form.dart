@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/features/authentication/controllers/login/login_controller.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/signup.dart';
-import 'package:flutter_store_mobile/navigation_menu.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
 import 'package:flutter_store_mobile/utils/validators/validators.dart';

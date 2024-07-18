@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_store_mobile/common/widgets/success_screen/success_screen.dart';
 import 'package:flutter_store_mobile/data/repositories/authentication/authentication_repository.dart';
-import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/verify_email_controller.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
