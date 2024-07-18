@@ -11,6 +11,8 @@ class TImages {
 
   static const String imagefix =
       'assets/images/animations/Animation - 1721315703382.json';
+  static const String imagesuccess =
+      'assets/images/animations/Animation - 1721326623363 (1).gif';
   //AppLogo
   static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
 

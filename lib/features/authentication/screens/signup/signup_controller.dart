@@ -71,10 +71,10 @@ class SignupController extends GetxController {
           title: 'Đăng ký thành công',
           message: 'Tài khoản của bạn đã được tạo! xác thực email để tiếp tục');
 
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim(),));
     } catch (e) {
       TFullScreenLoader.stopLoadingDialog();
-      TLoaders.errorSnackbar(title: 'mất kết nối', message: e.toString());
+      TLoaders.errorSnackbar(title: 'Có lỗi xảy ra', message: e.toString());
       
     }
   }

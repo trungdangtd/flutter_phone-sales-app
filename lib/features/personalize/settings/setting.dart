@@ -3,6 +3,7 @@ import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/primary_header_container.dart';
 import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
 import 'package:flutter_store_mobile/features/shop/screens/order/order.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
@@ -111,7 +112,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                        onPressed: () {}, child: const Text('Đăng Xuất')),
+                        onPressed: () => Get.offAll(const LoginScreen()),
+                        child: const Text('Đăng Xuất')),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections / 2),
                 ],
