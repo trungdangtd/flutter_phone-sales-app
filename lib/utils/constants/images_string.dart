@@ -9,6 +9,8 @@ class TImages {
   static const String onBoardingImage4 =
       "assets/images/on_boarding_images/sammy-line-delivery.gif";
 
+  static const String imagefix =
+      'assets/images/animations/Animation - 1721315703382.json';
   //AppLogo
   static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
 
