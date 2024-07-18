@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/image_text/vertical_image_text.dart';
+import 'package:flutter_store_mobile/features/shop/screens/sub_brand/sub_brand.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
+import 'package:get/get.dart';
 
 class THomeBrands extends StatelessWidget {
   const THomeBrands({
@@ -10,17 +12,16 @@ class THomeBrands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 88,
+      height: 110,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: 6,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return TVerticalImageText(
-            image: TImages.appleLogo,
-            title: 'Apple',
-            onTap: () {},
-          );
+              image: TImages.appleLogo,
+              title: 'Apple',
+              onTap: () => Get.to(() => const TSubBrandScreen()));
         },
       ),
     );

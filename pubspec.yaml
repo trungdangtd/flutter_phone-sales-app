@@ -14,14 +14,22 @@ dependencies:
   cupertino_icons: ^1.0.0
   get: ^4.6.6
   get_storage: ^2.1.1
+  #mô tả chi tiết sản phẩm
+  readmore: ^3.0.0
+  carousel_slider: ^4.2.1
+  flutter_rating_bar: ^4.0.1
 
   http: ^1.2.1
   intl: ^0.19.0
   logger: ^2.3.0
   url_launcher: ^6.3.0
-  carousel_slider: ^4.2.1
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
+  firebase_core: ^3.2.0
+  lottie: ^3.1.2
+  connectivity_plus: ^6.0.3
+  firebase_auth: ^5.1.2
+  cloud_firestore: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +43,7 @@ flutter:
     - assets/logos/
     - assets/icons/brands/
     - assets/images/content/
+    - assets/images/user/
     - assets/images/banners/
     - assets/images/reviews/
     - assets/images/products/

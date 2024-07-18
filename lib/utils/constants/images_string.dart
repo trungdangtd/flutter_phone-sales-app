@@ -9,6 +9,10 @@ class TImages {
   static const String onBoardingImage4 =
       "assets/images/on_boarding_images/sammy-line-delivery.gif";
 
+  static const String imagefix =
+      'assets/images/animations/Animation - 1721315703382.json';
+  static const String imagesuccess =
+      'assets/images/animations/Animation - 1721326623363 (1).gif';
   //AppLogo
   static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
 
@@ -17,6 +21,9 @@ class TImages {
       "assets/images/on_boarding_images/google-icon.png";
   static const String facebook =
       "assets/images/on_boarding_images/facebook-icon.png";
+
+  //Hồ sơ
+  static const String user = "assets/images/user/user.png";
 
   //BrandLogo
   static const String appleLogo = "assets/icons/brands/apple-logo.png";
@@ -50,4 +57,27 @@ class TImages {
   //Brand
   static const String clothIcon =
       "assets/icons/categories/icons8-tailors-dummy-64.png";
+  static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+
+  //Review sản phẩm
+  static const String userProfileImage1 =
+      "assets/images/reviews/review_profile_image_1.jpg";
+  static const String userProfileImage2 =
+      "assets/images/reviews/review_profile_image_2.jpeg";
+  static const String userProfileImage3 =
+      "assets/images/reviews/review_profile_image_3.jpeg";
+
+  //--Phương thức thanh toán
+  static const String applePay = "assets/icons/payment_methods/apple-pay.png";
+  static const String googlePay = "assets/icons/payment_methods/google-pay.png";
+  static const String creditCard =
+      "assets/icons/payment_methods/credit-card.png";
+  static const String masterCard =
+      "assets/icons/payment_methods/master-card.png";
+  static const String payPal = "assets/icons/payment_methods/paypal.png";
+  static const String visa = "assets/icons/payment_methods/visa.png";
+  static const String paystack = "assets/icons/payment_methods/paystack.png";
+  static const String paytm = "assets/icons/payment_methods/paytm.png";
+  static const String successfulPaymentIcon =
+      "assets/icons/payment_methods/successful_payment_icon.png";
 }

@@ -5,10 +5,12 @@ import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/sear
 import 'package:flutter_store_mobile/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_store_mobile/common/widgets/product.cart/cart.menu.icon.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_store_mobile/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
+import 'package:get/get.dart';
 import '../../../../common/widgets/brand/brand_card.dart';
 
 class Store extends StatelessWidget {
@@ -54,7 +56,9 @@ class Store extends StatelessWidget {
 
                         //--Title Hãng
                         TSectionWidget(
-                            title: 'Các hãng phổ biến', onPressed: () {}),
+                            title: 'Các hãng phổ biến',
+                            onPressed: () =>
+                                Get.to(() => const AllBrandsScreen())),
                         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
                         // Container sản phẩm
