@@ -7,6 +7,7 @@ import 'package:flutter_store_mobile/features/authentication/screens/signup/veri
 import 'package:flutter_store_mobile/navigation_menu.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -38,6 +39,35 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //sign in with GOOGLE
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      //trigger
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      //obtain
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+      //create credential
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      //Once signed in, return the UserCredential
+      return await _auth.signInWithCredential(credentials);
+      
+    } on FirebaseAuthException {
+      rethrow;
+    } on FirebaseException {
+      rethrow;
+    } on FormatException {
+      rethrow;
+    } on PlatformException {
+      rethrow;
+    } catch (e) {
+      throw 'có gì đó sai, hãy thử lại';
+    }
+  }
+
   /* Sign in with email and password */
   //login user
   Future<UserCredential> loginWithEmailandPassword(
@@ -57,6 +87,7 @@ class AuthenticationRepository extends GetxController {
       throw 'có gì đó sai, hãy thử lại';
     }
   }
+
   //EmailAuthentication - register
   Future<UserCredential> registerWithEmailandPassword(
       String email, String password) async {
@@ -96,6 +127,7 @@ class AuthenticationRepository extends GetxController {
   //logout user
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException {
