@@ -42,12 +42,12 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         //Categories heading
                         TSectionWidget(
-                          title: 'Các hãng điện thoại',
+                          title: 'Các loại sản phẩm',
                           textColor: TColors.white,
                         ),
                         SizedBox(height: TSizes.spaceBtwItems / 2),
                         //Categories list
-                        THomeBrands()
+                        THomeCategories()
                       ],
                     ),
                   )

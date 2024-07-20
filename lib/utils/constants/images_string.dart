@@ -28,6 +28,16 @@ class TImages {
   //BrandLogo
   static const String appleLogo = "assets/icons/brands/apple-logo.png";
 
+  //categories
+   static const String phonecate = "assets/icons/categories/smartphone-call.png";
+   static const String oldphonecate = "assets/icons/categories/77089.png";
+   static const String oldphone2 = "assets/icons/categories/13936.png";
+   static const String headphonePC = "assets/icons/categories/2426186.png";
+   static const String headphone1 = "assets/icons/categories/27130.png";
+   static const String earbudkoday = "assets/icons/categories/5000924.png";
+   static const String earbudcoday = "assets/icons/categories/3567067.png";
+   static const String speaker = "assets/icons/categories/650504.png";
+   static const String karaoke = "assets/icons/categories/9923320.png";
   //Animations
   static const String productsIllustration =
       "assets/images/animations/sammy-line-workout.gif";

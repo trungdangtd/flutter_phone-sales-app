@@ -5,6 +5,7 @@ import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/sear
 import 'package:flutter_store_mobile/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_store_mobile/common/widgets/product.cart/cart.menu.icon.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/shop/controller/categories_controller.dart';
 import 'package:flutter_store_mobile/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_store_mobile/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
@@ -18,8 +19,9 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final catelories = CategoriesController.instance.featuredCategories;
     return DefaultTabController(
-        length: 5,
+        length: catelories.length,
         child: Scaffold(
           appBar: TAppBar(
             title: Text('Cửa Hàng',
@@ -72,27 +74,15 @@ class Store extends StatelessWidget {
                     ),
                   ),
                   //Tab
-                  bottom: const TTabbar(
-                    tabs: [
-                      Tab(child: Text('Thể thao')),
-                      Tab(child: Text('Năng động')),
-                      Tab(child: Text('Phá chất')),
-                      Tab(child: Text('Thể thao')),
-                      Tab(child: Text('Thể thao')),
-                    ],
+                  bottom:  TTabbar(
+                    tabs: catelories.map((category)=> Tab(child: Text(category.name))).toList()
                   ),
                 ),
               ];
             },
             //thân
-            body: const TabBarView(
-              children: [
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab()
-              ],
+            body:  TabBarView(
+              children: catelories.map((category) => TCategoryTab(category: category)).toList()
             ),
           ),
         ));
