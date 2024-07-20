@@ -14,7 +14,6 @@ class SignupController extends GetxController {
 
   //variables
   final hidePassword = true.obs;
-  final privacyPolicy = true.obs;
   final email = TextEditingController();
   final lastName = TextEditingController();
   final userName = TextEditingController();
@@ -22,6 +21,7 @@ class SignupController extends GetxController {
   final firstName = TextEditingController();
   final phoneNumber = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  final userRepository = Get.put(UserRepository());
 
   // signup
   void signup() async {
@@ -39,13 +39,6 @@ class SignupController extends GetxController {
       //form validation
       if (!signupFormKey.currentState!.validate()) {
         TFullScreenLoader.stopLoadingDialog();
-        return;
-      }
-      //privacy policy check
-      if (!privacyPolicy.value) {
-        TLoaders.warningSnackbar(
-            title: 'Hãy đọc điều kiện sử dụng',
-            message: 'Vui lòng đọc và đồng ý với điều kiện sử dụng');
         return;
       }
       //register user in the firebase authentication

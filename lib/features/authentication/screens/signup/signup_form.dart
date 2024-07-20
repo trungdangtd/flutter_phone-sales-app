@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/signup_controller.dart';
-import 'package:flutter_store_mobile/features/authentication/screens/signup/terms_conditions_checkbox.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
 import 'package:flutter_store_mobile/utils/validators/validators.dart';
@@ -13,7 +12,7 @@ class TSignupForm extends StatelessWidget {
     super.key,
   });
 
-  @override
+ @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
     return Form(
@@ -100,10 +99,6 @@ class TSignupForm extends StatelessWidget {
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
-
-            ///Dieu kien checkbox
-            const TTermsAndConditionCheckbox(),
-            const SizedBox(height: TSizes.spaceBtwSections),
 
             ///Sign up button
             SizedBox(

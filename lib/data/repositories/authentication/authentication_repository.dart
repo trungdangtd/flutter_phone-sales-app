@@ -1,6 +1,8 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_store_mobile/data/repositories/user/user_repository.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/onboarding.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/verify_email.dart';
@@ -14,6 +16,9 @@ class AuthenticationRepository extends GetxController {
 
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+
+  //
+  User? get authUser => _auth.currentUser;
 
   @override
   void onReady() {
@@ -54,7 +59,6 @@ class AuthenticationRepository extends GetxController {
       );
       //Once signed in, return the UserCredential
       return await _auth.signInWithCredential(credentials);
-      
     } on FirebaseAuthException {
       rethrow;
     } on FirebaseException {
@@ -124,6 +128,23 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //Forgot password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException {
+      rethrow;
+    } on FirebaseException {
+      rethrow;
+    } on FormatException {
+      rethrow;
+    } on PlatformException {
+      rethrow;
+    } catch (e) {
+      throw 'có gì đó sai, hãy thử lại';
+    }
+  }
+
   //logout user
   Future<void> logout() async {
     try {
@@ -142,4 +163,46 @@ class AuthenticationRepository extends GetxController {
       throw 'có gì đó sai, hãy thử lại';
     }
   }
+
+  //delete User
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException {
+      rethrow;
+    } on FirebaseException {
+      rethrow;
+    } on FormatException {
+      rethrow;
+    } on PlatformException {
+      rethrow;
+    } catch (e) {
+      throw 'có gì đó sai, hãy thử lại';
+    }
+  }
+
+  //re auth
+  Future<void> reAuthenticateWithEmailandPassword(
+      String email, String password) async {
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException {
+      rethrow;
+    } on FirebaseException {
+      rethrow;
+    } on FormatException {
+      rethrow;
+    } on PlatformException {
+      rethrow;
+    } catch (e) {
+      throw 'có gì đó sai, hãy thử lại';
+    }
+  }
+
+  
 }

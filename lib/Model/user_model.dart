@@ -4,7 +4,7 @@ import 'package:flutter_store_mobile/utils/formatters/formatters.dart';
 class UserModel {
   // Keep those values final which you do not want to update
   final String id;
-  final String firstName;
+  String firstName;
   String lastName;
   final String username;
   final String email;
@@ -75,7 +75,9 @@ class UserModel {
             email: data['Email'] ?? '',
             phoneNumber: data['PhoneNumber'] ?? '',
             profilePicture: data['ProfilePicture'] ?? '');
+      }else{
+        return UserModel.empty();
       }
-      throw Exception('Failed to create UserModel from snapshot.'); // Add a throw statement to handle the case when data is null.
+      // Add a throw statement to handle the case when data is null.
     }
 }

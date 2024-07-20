@@ -39,7 +39,7 @@ class TLoaders {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
-      backgroundColor: const Color.fromARGB(255, 63, 101, 238),
+      backgroundColor: const Color.fromARGB(255, 21, 233, 60),
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
