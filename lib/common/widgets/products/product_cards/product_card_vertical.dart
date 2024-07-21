@@ -1,28 +1,41 @@
-import "package:flutter/material.dart";
-import "package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart";
-import "package:flutter_store_mobile/common/widgets/images/rounded_image.dart";
-import "package:flutter_store_mobile/common/widgets/text/product_price_text.dart";
-import "package:flutter_store_mobile/common/widgets/text/product_title_text.dart";
-import "package:flutter_store_mobile/features/shop/screens/product_details/product_detail.dart";
-import "package:flutter_store_mobile/utils/constants/colors.dart";
-import "package:flutter_store_mobile/utils/constants/images_string.dart";
-import "package:flutter_store_mobile/utils/constants/sizes.dart";
-import "package:flutter_store_mobile/utils/helpers/helper_function.dart";
-import "package:get/get.dart";
-import "package:iconsax/iconsax.dart";
-import "../../../style/shadows.dart";
-import "../../icons/t_circular_icon.dart";
-import "../../text/brand_title_text_verfied_icon.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart';
+import 'package:flutter_store_mobile/common/widgets/images/rounded_image.dart';
+import 'package:flutter_store_mobile/common/widgets/text/product_price_text.dart';
+import 'package:flutter_store_mobile/common/widgets/text/product_title_text.dart';
+import 'package:flutter_store_mobile/features/shop/controller/product_controller.dart';
+import 'package:flutter_store_mobile/features/shop/models/product_model.dart';
+import 'package:flutter_store_mobile/features/shop/screens/product_details/product_detail.dart';
+import 'package:flutter_store_mobile/utils/constants/colors.dart';
+import 'package:flutter_store_mobile/utils/constants/enums.dart';
+import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:intl/intl.dart'; // Import the intl package
+import '../../../style/shadows.dart';
+import '../../icons/t_circular_icon.dart';
+import '../../text/brand_title_text_verfied_icon.dart';
 
 class TProductCardVertical extends StatelessWidget {
-  const TProductCardVertical({super.key});
+  const TProductCardVertical({super.key, required this.productModel});
+
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(
+        productModel.price, productModel.salePrice);
+
+    final NumberFormat currencyFormatter = NumberFormat.currency(locale: 'vi_VN', symbol: '₫');
+
     //Container san pham
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetail()),
+      onTap: () => Get.to(() => ProductDetail(
+            productModel: productModel,
+          )),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -36,17 +49,22 @@ class TProductCardVertical extends StatelessWidget {
             // mã giảm giá, nút yêu thích,hình
             TRoundedContainer(
               height: 180,
+              width: 180,
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
                   ///thumbnail
-                  const TRoundedImage(
-                    imageUrl: TImages.productImage3,
-                    applyImageRadius: true,
+                  Center(
+                    child: TRoundedImage(
+                      imageUrl: productModel.thumbnail,
+                      applyImageRadius: true,
+                      isNetworkImage: true,
+                    ),
                   ),
 
                   /// mã giảm giá
+                  if(salePercentage != null )
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(
@@ -54,7 +72,7 @@ class TProductCardVertical extends StatelessWidget {
                       backgroundColor: TColors.secondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text('25%',
+                      child: Text('$salePercentage%',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
@@ -76,17 +94,18 @@ class TProductCardVertical extends StatelessWidget {
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             // thông tin chi tiết
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(left: TSizes.sm),
+                padding: const EdgeInsets.only(left: TSizes.sm),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TProductTitleText(
-                        title: 'Green Nike Air Shoe', smallSize: true),
-                    SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TBrandTitleWithVerifiedIcon(title: 'Nike'),
+                        title: productModel.title, smallSize: true),
+                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    TBrandTitleWithVerifiedIcon(
+                        title: productModel.brand!.name),
                   ],
                 ),
               ),
@@ -96,11 +115,35 @@ class TProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //Giá
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: TSizes.sm),
-                    child: TProductPriceText(price: '35.0'),
+                Flexible(
+                  child: Column(
+                    children: [
+                      if (productModel.productType ==
+                              ProductType.single.toString() &&
+                          productModel.salePrice > 0)
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: TSizes.sm),
+                            child: Text(
+                              currencyFormatter.format(productModel.price),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .apply(
+                                      decoration: TextDecoration.lineThrough),
+                            ),
+                          ),
+                        ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: TSizes.sm),
+                          child: TProductPriceText(
+                              price: controller.getProductPrice(productModel)),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 

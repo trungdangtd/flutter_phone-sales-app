@@ -3,12 +3,14 @@ import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/sear
 import 'package:flutter_store_mobile/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_store_mobile/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/shop/controller/product_controller.dart';
 import 'package:flutter_store_mobile/features/shop/screens/all_products/all_products.dart';
 import 'package:flutter_store_mobile/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_store_mobile/features/shop/screens/home/widgets/home_brands.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:flutter_store_mobile/utils/helpers/vertical_product_shimmer.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/custom_shape/containers/primary_header_container.dart';
@@ -19,6 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -70,13 +73,31 @@ class HomeScreen extends StatelessWidget {
                   //Title
                   TSectionWidget(
                       title: 'Các sản phẩm phổ biến',
-                      onPressed: () => Get.to(() => const AllProducts())),
+                      onPressed: () => Get.to(() =>  AllProducts(
+                            title: 'Các sản phẩm nổi bật',
+                            futureMethods: controller.fetchAllFeaturedProducts(),
+                          ))),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //Grid view San pham
-                  TGridLayout(
-                      itemCount: 4,
-                      itemBuilder: (_, index) => const TProductCardVertical())
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const TVerticalProductShimmer();
+                    }
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'Không tìm thấy dữ liệu',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      );
+                    }
+                    return TGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => TProductCardVertical(
+                              productModel: controller.featuredProducts[index],
+                            ));
+                  })
                 ],
               ),
             ),

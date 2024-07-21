@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/common/widgets/icons/t_circular_icon.dart';
 import 'package:flutter_store_mobile/common/widgets/layouts/grid_layout.dart';
+import 'package:flutter_store_mobile/features/shop/models/product_model.dart';
 import 'package:flutter_store_mobile/features/shop/screens/home/home.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,9 @@ class FavouriteScreen extends StatelessWidget {
             children: [
               TGridLayout(
                   itemCount: 6,
-                  itemBuilder: (_, index) => const TProductCardVertical())
+                  itemBuilder: (_, index) => TProductCardVertical(
+                        productModel: ProductModel.empty(),
+                      ))
             ],
           ),
         ),
