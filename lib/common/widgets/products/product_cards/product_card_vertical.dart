@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart';
 import 'package:flutter_store_mobile/common/widgets/images/rounded_image.dart';
+import 'package:flutter_store_mobile/common/widgets/products/favories_icon/favories_icon.dart';
 import 'package:flutter_store_mobile/common/widgets/text/product_price_text.dart';
 import 'package:flutter_store_mobile/common/widgets/text/product_title_text.dart';
 import 'package:flutter_store_mobile/features/shop/controller/product_controller.dart';
@@ -14,7 +15,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart'; // Import the intl package
 import '../../../style/shadows.dart';
-import '../../icons/t_circular_icon.dart';
 import '../../text/brand_title_text_verfied_icon.dart';
 
 class TProductCardVertical extends StatelessWidget {
@@ -81,13 +81,10 @@ class TProductCardVertical extends StatelessWidget {
                   ),
 
                   ///Button Yêu thích
-                  const Positioned(
+                   Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: TFavouriteIcon(productId: productModel.id,)
                   ),
                 ],
               ),

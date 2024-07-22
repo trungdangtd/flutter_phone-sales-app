@@ -7,6 +7,7 @@ import 'package:flutter_store_mobile/features/authentication/screens/login/login
 import 'package:flutter_store_mobile/features/authentication/screens/onboarding.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter_store_mobile/navigation_menu.dart';
+import 'package:flutter_store_mobile/utils/local_storage/storage_utility.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -27,9 +28,10 @@ class AuthenticationRepository extends GetxController {
   }
 
   screenRedirect() async {
-    User? user = _auth.currentUser;
+    final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await TLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(

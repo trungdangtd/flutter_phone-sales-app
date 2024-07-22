@@ -80,33 +80,6 @@ class SettingsScreen extends StatelessWidget {
                       title: 'Quyền riêng tư',
                       subTitle: 'Quản lý dữ liệu'),
 
-                  //-- Tùy chỉnh app
-                  const SizedBox(height: TSizes.spaceBtwSections),
-                  const TSectionWidget(
-                      title: 'Tùy chỉnh ứng dụng', showActionbutton: false),
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  const TSettingMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Icon'),
-                  TSettingMenuTile(
-                    icon: Iconsax.location,
-                    title: 'Geolocation',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
-                  TSettingMenuTile(
-                    icon: Iconsax.security_user,
-                    title: 'Chế độ an toàn',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: false, onChanged: (value) {}),
-                  ),
-                  TSettingMenuTile(
-                    icon: Iconsax.image,
-                    title: 'Hình chất lượng HD',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
                   //Nút Đăng Xuất
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(

@@ -32,13 +32,10 @@ class AllProductController extends GetxController {
         products.sort((a, b) => a.title.compareTo(b.title));
         break;
       case 'Giá Cao':
-        products.sort((a, b) => b.price.compareTo(a.price));
+        products.sort((a, b) => b.salePrice.compareTo(a.salePrice));
         break;
       case 'Giá thấp':
-        products.sort((a, b) => a.price.compareTo(b.price));
-        break;
-      case 'Mới nhất':
-        products.sort((a, b) => a.date!.compareTo(b.date!));
+        products.sort((a, b) => a.salePrice.compareTo(b.salePrice));
         break;
       case 'Khuyến mãi':
         products.sort((a, b) {

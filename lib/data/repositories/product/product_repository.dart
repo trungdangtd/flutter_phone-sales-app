@@ -66,6 +66,22 @@ class ProductRepository extends GetxController {
     }
   }
 
+  //favouries
+  //
+  Future<List<ProductModel>> getFavouriteProducts(List<String> productIds) async {
+      if (productIds.isNotEmpty) {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      return snapshot.docs.map((querySnapshot) => ProductModel.fromSnapshot(querySnapshot)).toList();
+    } else {
+      // Trường hợp danh sách productIds trống, trả về một danh sách rỗng
+      return [];
+    }
+    
+  }
+
   Future<List<ProductModel>> getProductForBrand(
       {required String brandId, int limit = -1}) async {
     try {
