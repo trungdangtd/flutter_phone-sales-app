@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart';
 import 'package:flutter_store_mobile/common/widgets/images/rounded_image.dart';
 import 'package:flutter_store_mobile/common/widgets/products/favories_icon/favories_icon.dart';
+import 'package:flutter_store_mobile/common/widgets/products/product_cards/product_cart_add_to_cart_button.dart';
 import 'package:flutter_store_mobile/common/widgets/text/product_price_text.dart';
 import 'package:flutter_store_mobile/common/widgets/text/product_title_text.dart';
 import 'package:flutter_store_mobile/features/shop/controller/product_controller.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_store_mobile/utils/constants/enums.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart'; // Import the intl package
 import '../../../style/shadows.dart';
 import '../../text/brand_title_text_verfied_icon.dart';
@@ -145,21 +145,7 @@ class TProductCardVertical extends StatelessWidget {
                 ),
 
                 // Button add vào giỏ hàng
-                Container(
-                  decoration: const BoxDecoration(
-                    color: TColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(TSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(TSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    width: TSizes.iconLg * 1.2,
-                    height: TSizes.iconLg * 1.2,
-                    child:
-                        Center(child: Icon(Iconsax.add, color: TColors.white)),
-                  ),
-                ),
+               ProductCartAddToCartButton(product: productModel),
               ],
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:flutter_store_mobile/features/shop/controller/cart_controller.dart';
 import 'package:flutter_store_mobile/features/shop/controller/image_controller.dart';
 import 'package:flutter_store_mobile/features/shop/models/product_model.dart';
 import 'package:flutter_store_mobile/features/shop/models/product_variation_module.dart';
@@ -28,6 +29,11 @@ class VariationController extends GetxController {
     if (selectedVariations.image.isNotEmpty) {
       ImageController.instance.selectedProductImage.value =
           selectedVariations.image;
+    }
+    if (selectedVariations.id.isNotEmpty) {
+      final cartCatroller = CartController.instance;
+      cartCatroller.productQuantityInCart.value = cartCatroller
+          .getVariationQuantityCart(product.id, selectedVariations.id);
     }
     selectedVariation.value = selectedVariations;
     getProductVariationStockStatus();
@@ -64,7 +70,7 @@ class VariationController extends GetxController {
         .where((variation) =>
             variation.attributeValues[attributeName] != null &&
             variation.attributeValues[attributeName]!.isNotEmpty &&
-            variation.stock > 0) 
+            variation.stock > 0)
         .map((variation) => variation.attributeValues[attributeName])
         .toSet();
 

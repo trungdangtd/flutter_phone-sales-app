@@ -40,10 +40,11 @@ class THomeAppBar extends StatelessWidget {
           }),
         ],
       ),
-      actions: [
+      actions: const [
         TCardCountedIcon(
-          onPressed: () {},
           iconColor: TColors.white,
+          counterBgcolor: TColors.black,
+          counterTextColor: TColors.white,
         )
       ],
     );

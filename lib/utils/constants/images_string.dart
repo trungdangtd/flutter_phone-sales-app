@@ -54,6 +54,8 @@ class TImages {
 
   static const String pencilLoading =
       "assets/images/animations/140429-pencil-drawing.json";
+  static const String emptyCart =
+      "assets/images/animations/Animation - 1721742492922.json";
 //
   //Banner
   static const String promoBanner1 = "assets/images/banners/banner1.png";

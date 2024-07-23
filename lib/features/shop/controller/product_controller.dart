@@ -26,7 +26,7 @@ class ProductController extends GetxController {
 
       featuredProducts.assignAll(product);
     } catch (e) {
-      TLoaders.errorSnackbar(title: 'Oh Snap!', message: e.toString());
+      TLoaders.errorSnackbar(title: 'Ôi Lỗi', message: e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -36,11 +36,11 @@ class ProductController extends GetxController {
     try {
       
       // ... code để lấy danh sách sản phẩm nổi bật ...
-      final product = await productRepository.getFeaturedProducts();
+      final product = await productRepository.getAllFeaturedProducts();
 
       return product;
     } catch (e) {
-      TLoaders.errorSnackbar(title: 'Oh Snap!', message: e.toString());
+      TLoaders.errorSnackbar(title: 'lỗi', message: e.toString());
       return [];
     } 
   }

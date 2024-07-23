@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/circular_container.dart';
-import 'package:flutter_store_mobile/common/widgets/icons/t_circular_icon.dart';
-import 'package:flutter_store_mobile/common/widgets/images/circular_image.dart';
 import 'package:flutter_store_mobile/data/repositories/address/address_repository.dart';
 import 'package:flutter_store_mobile/features/shop/models/address_model.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';

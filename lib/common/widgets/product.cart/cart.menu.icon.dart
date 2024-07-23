@@ -1,19 +1,25 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/features/shop/controller/cart_controller.dart';
 import 'package:flutter_store_mobile/features/shop/screens/cart/cart.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
+import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TCardCountedIcon extends StatelessWidget {
   const TCardCountedIcon({
     super.key,
-    required this.onPressed,
     this.iconColor,
+    this.counterBgcolor,
+    this.counterTextColor,
   });
-  final VoidCallback onPressed;
-  final Color? iconColor;
+
+  final Color? iconColor, counterBgcolor, counterTextColor;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
+    final dark = THelperFunctions.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
@@ -28,14 +34,17 @@ class TCardCountedIcon extends StatelessWidget {
               width: 18,
               height: 18,
               decoration: BoxDecoration(
-                  color: TColors.black,
+                  color:
+                      counterBgcolor ?? (dark ? TColors.white : TColors.black),
                   borderRadius: BorderRadius.circular(100)),
               child: Center(
-                child: Text("2",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .apply(color: TColors.white, fontSizeFactor: 0.8)),
+                child: Obx(
+                  () => Text(controller.noOfCartItems.value.toString(),
+                      style: Theme.of(context).textTheme.labelSmall!.apply(
+                          color: counterTextColor ??
+                              (dark ? TColors.white : TColors.black),
+                          fontSizeFactor: 0.8)),
+                ),
               )),
         )
       ],

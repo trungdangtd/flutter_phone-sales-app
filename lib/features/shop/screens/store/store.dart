@@ -30,8 +30,12 @@ class Store extends StatelessWidget {
           appBar: TAppBar(
             title: Text('Cửa Hàng',
                 style: Theme.of(context).textTheme.headlineMedium),
-            actions: [
-              TCardCountedIcon(onPressed: () {}),
+            actions: const [
+              TCardCountedIcon(
+                iconColor: TColors.white,
+                counterBgcolor: TColors.black,
+                counterTextColor: TColors.white,
+              ),
             ],
           ),
           body: NestedScrollView(
