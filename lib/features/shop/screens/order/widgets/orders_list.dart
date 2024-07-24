@@ -6,7 +6,6 @@ import 'package:flutter_store_mobile/navigation_menu.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
-import 'package:flutter_store_mobile/utils/helpers/could_helper_function.dart';
 import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -41,7 +40,6 @@ class TOrdersListItems extends StatelessWidget {
           }
 
           final orders = snapshot.data!;
-          print('Orders fetched: ${orders.length}');
 
           return ListView.separated(
               shrinkWrap: true,
@@ -50,7 +48,6 @@ class TOrdersListItems extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwItems),
               itemBuilder: (_, index) {
                 final order = orders[index];
-                print('Rendering order: ${order.id}');
                 return TRoundedContainer(
                   showBorder: true,
                   padding: const EdgeInsets.all(TSizes.md),

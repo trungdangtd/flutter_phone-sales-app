@@ -7,7 +7,6 @@ import 'package:flutter_store_mobile/features/authentication/screens/login/login
 import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
 import 'package:flutter_store_mobile/features/shop/screens/cart/cart.dart';
 import 'package:flutter_store_mobile/features/shop/screens/order/order.dart';
-import 'package:flutter_store_mobile/features/shop/screens/order/widgets/orders_list.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
