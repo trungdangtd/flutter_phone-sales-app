@@ -15,7 +15,7 @@ class TImages {
       'assets/images/animations/Animation - 1721326623363 (1).gif';
   //AppLogo
   static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
-
+  static const String appLogo2 = "assets/logos/logo22.jpg";
   //Social Logos
   static const String google =
       "assets/images/on_boarding_images/google-icon.png";
@@ -28,6 +28,16 @@ class TImages {
   //BrandLogo
   static const String appleLogo = "assets/icons/brands/apple-logo.png";
 
+  //categories
+  static const String phonecate = "assets/icons/categories/smartphone-call.png";
+  static const String oldphonecate = "assets/icons/categories/77089.png";
+  static const String oldphone2 = "assets/icons/categories/13936.png";
+  static const String headphonePC = "assets/icons/categories/2426186.png";
+  static const String headphone1 = "assets/icons/categories/27130.png";
+  static const String earbudkoday = "assets/icons/categories/5000924.png";
+  static const String earbudcoday = "assets/icons/categories/3567067.png";
+  static const String speaker = "assets/icons/categories/650504.png";
+  static const String karaoke = "assets/icons/categories/9923320.png";
   //Animations
   static const String productsIllustration =
       "assets/images/animations/sammy-line-workout.gif";
@@ -42,6 +52,12 @@ class TImages {
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
+  static const String pencilLoading =
+      "assets/images/animations/140429-pencil-drawing.json";
+  static const String emptyCart =
+      "assets/images/animations/Animation - 1721742492922.json";
+  static const String ordercomplete =
+      "assets/images/animations/Animation - 1721766983576.gif";
   //Banner
   static const String promoBanner1 = "assets/images/banners/banner1.png";
   static const String promoBanner2 = "assets/images/banners/banner2.png";
@@ -74,7 +90,7 @@ class TImages {
       "assets/icons/payment_methods/credit-card.png";
   static const String masterCard =
       "assets/icons/payment_methods/master-card.png";
-  static const String payPal = "assets/icons/payment_methods/paypal.png";
+  static const String vnPay = "assets/icons/payment_methods/vnPay.png";
   static const String visa = "assets/icons/payment_methods/visa.png";
   static const String paystack = "assets/icons/payment_methods/paystack.png";
   static const String paytm = "assets/icons/payment_methods/paytm.png";

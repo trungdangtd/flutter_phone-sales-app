@@ -13,7 +13,7 @@ class TSectionWidget extends StatelessWidget {
   final Color? textColor;
   final bool showActionbutton;
   final String title, buttonTitle;
-  final void Function()? onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

@@ -9,8 +9,13 @@ import '../../icons/t_circular_icon.dart';
 class TProductQuantityWithAddRemoveButton extends StatelessWidget {
   const TProductQuantityWithAddRemoveButton({
     super.key,
+    required this.quantity,
+    required this.onAdd,
+    required this.onRemove,
   });
 
+  final int quantity;
+  final VoidCallback onAdd, onRemove;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,17 +32,20 @@ class TProductQuantityWithAddRemoveButton extends StatelessWidget {
           backgroundColor: THelperFunctions.isDarkMode(context)
               ? TColors.darkGrey
               : TColors.light,
+          onPressed: onRemove,
         ),
         const SizedBox(width: TSizes.spaceBtwItems),
-        Text('2', style: Theme.of(context).textTheme.titleSmall),
+        Text(quantity.toString(),
+            style: Theme.of(context).textTheme.titleSmall),
         const SizedBox(width: TSizes.spaceBtwItems),
-        const TCircularIcon(
+        TCircularIcon(
           icon: Iconsax.add,
           width: 32,
           height: 32,
           size: TSizes.md,
           color: TColors.white,
           backgroundColor: TColors.primary,
+          onPressed: onAdd,
         ),
       ],
     );

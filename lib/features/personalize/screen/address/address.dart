@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/add_new_address.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/widgets/single_address.dart';
+import 'package:flutter_store_mobile/features/shop/controller/address_controller.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:flutter_store_mobile/utils/helpers/could_helper_function.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -12,6 +14,7 @@ class UserAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddressController());
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const AddNewAddressScreen()),
@@ -23,14 +26,28 @@ class UserAddressScreen extends StatelessWidget {
         title:
             Text('Địa chỉ', style: Theme.of(context).textTheme.headlineSmall),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
-          child: Column(
-            children: [
-              TSingleAddress(selectedAddress: false),
-              TSingleAddress(selectedAddress: true),
-            ],
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: Obx(
+            () => FutureBuilder(
+                key: Key(controller.refreshData.value.toString()),
+                future: controller.allUserAddress(),
+                builder: (context, snapshot) {
+                  final response = TCloudHelperFunctions.checkMultiRecordState(
+                      snapshot: snapshot);
+                  if (response != null) return response;
+            
+                  final address = snapshot.data!;
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: address.length,
+                    itemBuilder: (_, index) => TSingleAddress(
+                      address: address[index],
+                      onTap: () => controller.selectedAddress(),
+                    ),
+                  );
+                }),
           ),
         ),
       ),

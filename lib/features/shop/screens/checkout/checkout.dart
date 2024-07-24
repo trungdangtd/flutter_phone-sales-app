@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/rounded_container.dart';
 import 'package:flutter_store_mobile/common/widgets/products/cart/coupon_widget.dart';
-import 'package:flutter_store_mobile/common/widgets/success_screen/success_screen.dart';
+import 'package:flutter_store_mobile/features/shop/controller/cart_controller.dart';
+import 'package:flutter_store_mobile/features/shop/controller/oder_controller.dart';
 import 'package:flutter_store_mobile/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:flutter_store_mobile/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:flutter_store_mobile/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:flutter_store_mobile/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-import 'package:flutter_store_mobile/navigation_menu.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
-import 'package:flutter_store_mobile/utils/constants/images_string.dart';
+import 'package:flutter_store_mobile/utils/helpers/pricing_cacultor.dart';
+import 'package:flutter_store_mobile/utils/popups/loader.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_function.dart';
 
@@ -19,6 +21,12 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NumberFormat currencyFormatter =
+        NumberFormat.currency(locale: 'vi_VN', symbol: '₫');
+    final cartController = CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OderController());
+    final totalAmount = TPricingCalculator.calculateTotalPrice(subTotal, 'VN');
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: TAppBar(
@@ -68,15 +76,12 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(
-                  () => SuccessScreen(
-                    image: TImages.successfulPaymentIcon,
-                    title: 'Thanh toán thành công!',
-                    subTitle: 'Đơn hàng của bạn sẽ được giao tới sớm thôi!',
-                    onPressed: () => Get.offAll(() => const NavigationMenu()),
-                  ),
-                ),
-            child: const Text('Thanh Toán \$200')),
+            onPressed: subTotal > 0
+                ? () => orderController.processOrder(totalAmount)
+                : () => TLoaders.warningSnackbar(
+                    title: 'Không có sản phẩm trong giỏ hàng',
+                    message: 'hãy thêm sản phẩm vào giỏ hàng'),
+            child: Text('Thanh Toán ${currencyFormatter.format(totalAmount)}')),
       ),
     );
   }

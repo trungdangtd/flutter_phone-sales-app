@@ -5,6 +5,7 @@ import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
+import 'package:flutter_store_mobile/features/shop/screens/cart/cart.dart';
 import 'package:flutter_store_mobile/features/shop/screens/order/order.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
@@ -55,14 +56,16 @@ class SettingsScreen extends StatelessWidget {
                       subTitle: 'Thiết lập địa chỉ giao hàng',
                       onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingMenuTile(
-                      icon: Iconsax.shopping_cart,
-                      title: 'Giỏ Hàng',
-                      subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng',
-                      onTap: () => Get.to(() => const OrderScreen())),
-                  const TSettingMenuTile(
+                    icon: Iconsax.shopping_cart,
+                    title: 'Giỏ Hàng',
+                    subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng',
+                    onTap: () => Get.to(() => const CartScreen()),
+                  ),
+                  TSettingMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'Đơn đặt hàng',
-                      subTitle: 'Các đơn hàng'),
+                      subTitle: 'Các đơn hàng',
+                      onTap: () => Get.to(() => const OrderScreen())),
                   const TSettingMenuTile(
                       icon: Iconsax.bank,
                       title: 'Tài khoản ngân hàng',
@@ -80,33 +83,6 @@ class SettingsScreen extends StatelessWidget {
                       title: 'Quyền riêng tư',
                       subTitle: 'Quản lý dữ liệu'),
 
-                  //-- Tùy chỉnh app
-                  const SizedBox(height: TSizes.spaceBtwSections),
-                  const TSectionWidget(
-                      title: 'Tùy chỉnh ứng dụng', showActionbutton: false),
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  const TSettingMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Icon'),
-                  TSettingMenuTile(
-                    icon: Iconsax.location,
-                    title: 'Geolocation',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
-                  TSettingMenuTile(
-                    icon: Iconsax.security_user,
-                    title: 'Chế độ an toàn',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: false, onChanged: (value) {}),
-                  ),
-                  TSettingMenuTile(
-                    icon: Iconsax.image,
-                    title: 'Hình chất lượng HD',
-                    subTitle: 'Set recommendation based on location',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
                   //Nút Đăng Xuất
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(

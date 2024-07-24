@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/common/widgets/appbar/appbar.dart';
 import 'package:flutter_store_mobile/common/widgets/images/circular_image.dart';
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
+import 'package:flutter_store_mobile/features/personalization/controllers/user_controller.dart';
+import 'package:flutter_store_mobile/features/personalize/screen/profile/change_name.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/profile/widgets/profile_menu.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
+import 'package:flutter_store_mobile/utils/constants/shimmer.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: const TAppBar(
         showBackArrow: true,
@@ -28,10 +33,23 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(
-                        image: TImages.user, width: 80, height: 80),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isNotEmpty ? networkImage : TImages.user;
+
+                      return controller.uploadImage.value
+                          ? const TShimerEffect(
+                              width: 80, height: 80, radius: 80)
+                          : TCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty,
+                            );
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Thay đổi ảnh đại diện')),
                   ],
                 ),
@@ -47,11 +65,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
 
               TProfileMenu(
-                  onPressed: () {}, title: 'Tên', value: 'Hoàng A Trung'),
+                  onPressed: () => Get.to(() => const ChangeName()),
+                  title: 'Tên',
+                  value: controller.user.value.fullName),
               TProfileMenu(
                   onPressed: () {},
                   title: 'Tên tài khoản',
-                  value: 'hoang_a_trung'),
+                  value: controller.user.value.username),
 
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
@@ -66,15 +86,15 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () {},
                   title: 'ID người dùng',
                   icon: Iconsax.copy,
-                  value: '12345'),
+                  value: controller.user.value.id),
               TProfileMenu(
                   onPressed: () {},
                   title: 'E-mail',
-                  value: 'hoangatrung@gmail.com'),
+                  value: controller.user.value.email),
               TProfileMenu(
                   onPressed: () {},
                   title: 'Số điện thoại',
-                  value: '0827999420'),
+                  value: controller.user.value.phoneNumber),
               TProfileMenu(onPressed: () {}, title: 'Giới tính', value: 'Nam'),
               TProfileMenu(
                   onPressed: () {}, title: 'Ngày Sinh', value: '10/10/2024'),
@@ -83,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarning(),
                   child: const Text('Xóa tài khoản',
                       style: TextStyle(color: Colors.red)),
                 ),

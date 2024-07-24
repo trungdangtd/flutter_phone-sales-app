@@ -30,6 +30,11 @@ dependencies:
   connectivity_plus: ^6.0.3
   firebase_auth: ^5.1.2
   cloud_firestore: ^5.1.0
+  google_sign_in: ^6.2.1
+  shimmer: ^3.0.0
+  image_picker: ^1.1.2
+  firebase_storage: ^12.1.1
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

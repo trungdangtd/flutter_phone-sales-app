@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_mobile/features/shop/models/brand_module.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';
-import '../../../utils/constants/images_string.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../custom_shape/containers/rounded_container.dart';
@@ -12,9 +12,10 @@ class TBrandCard extends StatelessWidget {
   const TBrandCard({
     super.key,
     this.onTap,
-    required this.showBorder,
+    required this.showBorder, required this.brand,
   });
 
+  final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -31,8 +32,8 @@ class TBrandCard extends StatelessWidget {
             //--Icon
             Flexible(
               child: TCircularImage(
-                isNetworkImage: false,
-                image: TImages.clothIcon,
+                isNetworkImage: true,
+                image: brand.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: THelperFunctions.isDarkMode(context)
                     ? TColors.white
@@ -47,10 +48,10 @@ class TBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TBrandTitleWithVerifiedIcon(
-                      title: 'Nike', brandTextSize: TextSizes.large),
+                   TBrandTitleWithVerifiedIcon(
+                      title: brand.name, brandTextSize: TextSizes.large),
                   Text(
-                    '256 sản phẩm',
+                    '${brand.productsCount ?? 0} sản phẩm',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )
