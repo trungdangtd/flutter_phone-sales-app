@@ -15,7 +15,7 @@ class TImages {
       'assets/images/animations/Animation - 1721326623363 (1).gif';
   //AppLogo
   static const String appLogo = "assets/logos/logo_5TechZone_v1.png";
-
+  static const String appLogo2 = "assets/logos/logo22.jpg";
   //Social Logos
   static const String google =
       "assets/images/on_boarding_images/google-icon.png";
@@ -56,7 +56,8 @@ class TImages {
       "assets/images/animations/140429-pencil-drawing.json";
   static const String emptyCart =
       "assets/images/animations/Animation - 1721742492922.json";
-//
+  static const String ordercomplete =
+      "assets/images/animations/Animation - 1721766983576.gif";
   //Banner
   static const String promoBanner1 = "assets/images/banners/banner1.png";
   static const String promoBanner2 = "assets/images/banners/banner2.png";
@@ -89,7 +90,7 @@ class TImages {
       "assets/icons/payment_methods/credit-card.png";
   static const String masterCard =
       "assets/icons/payment_methods/master-card.png";
-  static const String payPal = "assets/icons/payment_methods/paypal.png";
+  static const String vnPay = "assets/icons/payment_methods/vnPay.png";
   static const String visa = "assets/icons/payment_methods/visa.png";
   static const String paystack = "assets/icons/payment_methods/paystack.png";
   static const String paytm = "assets/icons/payment_methods/paytm.png";

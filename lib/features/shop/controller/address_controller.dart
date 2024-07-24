@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_mobile/common/widgets/custom_shape/containers/circular_container.dart';
+import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/data/repositories/address/address_repository.dart';
+import 'package:flutter_store_mobile/features/personalize/screen/address/add_new_address.dart';
+import 'package:flutter_store_mobile/features/personalize/screen/address/widgets/single_address.dart';
 import 'package:flutter_store_mobile/features/shop/models/address_model.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
+import 'package:flutter_store_mobile/utils/constants/sizes.dart';
+import 'package:flutter_store_mobile/utils/helpers/could_helper_function.dart';
+import 'package:flutter_store_mobile/utils/helpers/loader.dart';
 import 'package:flutter_store_mobile/utils/helpers/network_manager.dart';
 import 'package:flutter_store_mobile/utils/popups/full_screen_loader.dart';
 import 'package:flutter_store_mobile/utils/popups/loader.dart';
@@ -47,7 +52,7 @@ class AddressController extends GetxController {
         },
         barrierDismissible: false,
         backgroundColor: Colors.transparent,
-        content: const TCircularContainer(),
+        content: const TCircularLoader(),
       );
 
       if (selectedAddress.value.id.isNotEmpty) {
@@ -128,5 +133,53 @@ class AddressController extends GetxController {
     state.clear();
     country.clear();
     addressFormKey.currentState?.reset();
+  }
+
+  Future<void> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(TSizes.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TSectionWidget(title: 'Chọn Địa chỉ'),
+            FutureBuilder(
+              future: allUserAddress(),
+              builder: (_, snapshot) {
+                final response = TCloudHelperFunctions.checkMultiRecordState(
+                    snapshot: snapshot);
+                if (response != null) return response;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) => TSingleAddress(
+                    address: snapshot.data![index],
+                    onTap: () async {
+                      await selectAdress(snapshot.data![index]);
+                      Get.back();
+                    },
+                  ),
+                );
+              },
+            ),
+            const SizedBox(
+              height: TSizes.defaultSpace,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const AddNewAddressScreen())),
+                child: const Text('Thêm địa chỉ mới'),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

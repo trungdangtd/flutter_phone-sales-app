@@ -1,7 +1,10 @@
-//import '../../features/shop/models/cart_model.dart';
+import 'package:intl/intl.dart';
 
 class TPricingCalculator {
   /// -- Calculate Price based on tax and shipping
+  static final NumberFormat currencyFormatter =
+        NumberFormat.currency(locale: 'vi_VN', symbol: '₫');
+  
   static double calculateTotalPrice(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);
     double taxAmount = productPrice * taxRate;
@@ -15,20 +18,20 @@ class TPricingCalculator {
   /// -- Calculate shipping cost
   static String calculateShippingCost(double productPrice, String location) {
     double shippingCost = getShippingCost(location);
-    return shippingCost.toStringAsFixed(2);
+    return currencyFormatter.format(shippingCost);
   }
 
   /// -- Calculate tax
   static String calculateTax(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);
     double taxAmount = productPrice * taxRate;
-    return taxAmount.toStringAsFixed(2);
+    return currencyFormatter.format(taxAmount);
   }
 
   static double getTaxRateForLocation(String location) {
     // Lookup the tax rate for the given location from a tax rate database or API.
     // Return the appropriate tax rate.
-    return 0.10; //Example tax rate of 10%
+    return 0.10; // Example tax rate of 10%
   }
 
   static double getShippingCost(String location) {

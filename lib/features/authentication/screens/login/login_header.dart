@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_mobile/utils/constants/images_string.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:flutter_store_mobile/utils/constants/text_string.dart';
+import 'package:flutter_store_mobile/utils/helpers/helper_function.dart';
 
 class TLoginHeader extends StatelessWidget {
   const TLoginHeader({
@@ -10,13 +11,15 @@ class TLoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Image(
+        Image(
           height: 150,
-          image: AssetImage(TImages.appLogo),
-          //(dark ? TImages.lightAppLogo : TImages.darkAppLogo) dành cho logo chế độ sáng tối//
+          image: dark
+              ? const AssetImage(TImages.appLogo)
+              : const AssetImage(TImages.appLogo2),
         ),
         Text(TTexts.loginTitle,
             style: Theme.of(context).textTheme.headlineMedium),

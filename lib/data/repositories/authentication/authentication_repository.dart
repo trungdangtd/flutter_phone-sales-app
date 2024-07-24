@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -24,6 +23,7 @@ class AuthenticationRepository extends GetxController {
   @override
   void onReady() {
     FlutterNativeSplash.remove();
+    onBoarding();
     screenRedirect();
   }
 
@@ -38,12 +38,14 @@ class AuthenticationRepository extends GetxController {
               email: _auth.currentUser?.email,
             ));
       }
-    } else {
-      deviceStorage.writeIfNull('IsFirstTime', true);
-      deviceStorage.read('IsFirstTime') != true
-          ? Get.offAll(() => const LoginScreen())
-          : Get.offAll(const OnboardingScreen());
     }
+  }
+
+  onBoarding() async {
+    deviceStorage.writeIfNull('IsFirstTime', true);
+    deviceStorage.read('IsFirstTime') != true
+        ? Get.offAll(() => const OnboardingScreen())
+        : Get.offAll(const LoginScreen());
   }
 
   //sign in with GOOGLE
@@ -205,6 +207,4 @@ class AuthenticationRepository extends GetxController {
       throw 'có gì đó sai, hãy thử lại';
     }
   }
-
-  
 }

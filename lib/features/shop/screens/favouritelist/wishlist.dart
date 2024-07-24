@@ -23,7 +23,7 @@ class FavouriteScreen extends StatelessWidget {
     final controller = FavouritesController.instance;
     return Scaffold(
       appBar: TAppBar(
-        title: Text('Danh sach yeu thich',
+        title: Text('Danh sách yêu thích',
             style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           TCircularIcon(

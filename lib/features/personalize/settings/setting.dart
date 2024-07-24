@@ -5,7 +5,9 @@ import 'package:flutter_store_mobile/common/widgets/list_tile/setting_menu_tile.
 import 'package:flutter_store_mobile/common/widgets/text/section_heading.dart';
 import 'package:flutter_store_mobile/features/authentication/screens/login/login.dart';
 import 'package:flutter_store_mobile/features/personalize/screen/address/address.dart';
+import 'package:flutter_store_mobile/features/shop/screens/cart/cart.dart';
 import 'package:flutter_store_mobile/features/shop/screens/order/order.dart';
+import 'package:flutter_store_mobile/features/shop/screens/order/widgets/orders_list.dart';
 import 'package:flutter_store_mobile/utils/constants/colors.dart';
 import 'package:flutter_store_mobile/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -55,14 +57,16 @@ class SettingsScreen extends StatelessWidget {
                       subTitle: 'Thiết lập địa chỉ giao hàng',
                       onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingMenuTile(
-                      icon: Iconsax.shopping_cart,
-                      title: 'Giỏ Hàng',
-                      subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng',
-                      onTap: () => Get.to(() => const OrderScreen())),
-                  const TSettingMenuTile(
+                    icon: Iconsax.shopping_cart,
+                    title: 'Giỏ Hàng',
+                    subTitle: 'Thêm,xóa sản phẩm trong giỏ hàng',
+                    onTap: () => Get.to(() => const CartScreen()),
+                  ),
+                  TSettingMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'Đơn đặt hàng',
-                      subTitle: 'Các đơn hàng'),
+                      subTitle: 'Các đơn hàng',
+                      onTap: () => Get.to(() => const OrderScreen())),
                   const TSettingMenuTile(
                       icon: Iconsax.bank,
                       title: 'Tài khoản ngân hàng',

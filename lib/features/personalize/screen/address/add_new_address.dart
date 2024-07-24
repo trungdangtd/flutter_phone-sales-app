@@ -14,7 +14,7 @@ class AddNewAddressScreen extends StatelessWidget {
 
     return Scaffold(
       appBar:
-          const TAppBar(showBackArrow: true, title: Text('Add new Address')),
+          const TAppBar(showBackArrow: true, title: Text('Thêm địa chỉ mới')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
